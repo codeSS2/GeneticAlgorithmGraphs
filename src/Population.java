@@ -6,30 +6,18 @@ import java.util.Random;
 
 public class Population {
     DNA[] population;
-    String best;
     ArrayList<DNA> matingPool;
     int generations;
     boolean finished;
-    String target;
-    String[] targetArray;
     double mutationRate;
-    int perfectScore;
 
-    Population(String t, double m, int num) {
+    Population(double m, int num) {
         finished = false;
-        target = t;
         mutationRate = m;
-        perfectScore = 1;
-        best = "";
 
         population = new DNA[num];
         for (int i = 0; i < population.length; i++) {
-            population[i] = new DNA(target.length());
-        }
-
-        targetArray = new String[target.length()];
-        for (int i = 0; i < target.length(); i++) {
-            targetArray[i] = String.valueOf(target.toCharArray()[i]);
+            population[i] = new DNA(20);
         }
         //calcFitness();
     }
@@ -90,8 +78,8 @@ public class Population {
                 highestFitness = population[i].fitness;
             }
         }
-        best = population[index].getPhrase();
-        if (highestFitness == perfectScore) {
+        //best = population[index].getPhrase();
+        if (highestFitness > 0.8) {
             finished = true;
         }
     }

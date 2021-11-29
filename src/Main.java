@@ -1,13 +1,9 @@
-import java.util.Hashtable;
-
 public class Main {
     public static void main(String[] args) {
-        String target = "3.14159265358979323846264338327950";
         int populationMax = 2000;
-        double mutationRate = 0.01;
-        Population population = new Population(target, mutationRate, populationMax);
+        double mutationRate = 1; //meaning 1%
+        Population population = new Population(mutationRate, populationMax);
 
-        System.out.println("Target: " + target + "");
         long startTime = System.nanoTime();
 
         do {
@@ -15,7 +11,6 @@ public class Main {
             population.generate();
             population.calcFitness();
             population.evaluate();
-            //System.out.println(population.best);
         } while(!population.finished);
 
         long endTime = System.nanoTime();
