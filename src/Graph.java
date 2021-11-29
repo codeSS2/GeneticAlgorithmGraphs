@@ -1,5 +1,3 @@
-import java.util.Hashtable;
-
 public class Graph {
     private final int[][] matrix;
 
@@ -19,5 +17,4 @@ public class Graph {
     public int getDistance(String city1, String city2) {
         return matrix[getIndexOfLetter(city1)][getIndexOfLetter(city2)];
     }
-
 }
