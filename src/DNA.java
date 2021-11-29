@@ -22,7 +22,7 @@ public class DNA {
 
     //randomly selects a new char from set given bounds
     public String newChar() {
-        int c = new Random().nextInt(46,58);
+        int c = new Random().nextInt(58);
         //int cbc = new Random().nextInt(65,91);
         if (c == 47) c = 48;
         return Character.toString(c);
@@ -58,7 +58,7 @@ public class DNA {
     //mutation
     public void mutate(double mutationRate) {
         for (int i = 0; i < genes.length; i++) {
-            if (new Random().nextDouble(1) < mutationRate) {
+            if (new Random().nextInt(100) < mutationRate) {
                 genes[i] = newChar();
             }
         }
