@@ -10,38 +10,42 @@ import java.util.Random;
 public class DNA {
     String[] genes;
     double fitness;
+    int totalDistance;
+    Graph graph = new Graph();
 
     //constructor
     DNA(int size) {
         this.genes = new String[size];
         this.fitness = 0;
-        for (int i = 0; i < size; i++) {
+        this.genes[0] = "x";
+        for (int i = 1; i < size; i++) {
             this.genes[i] = newChar();
         }
     }
 
     //randomly selects a new char from set given bounds
     public String newChar() {
-        int c = new Random().nextInt(58);
-        //int cbc = new Random().nextInt(65,91);
-        if (c == 47) c = 48;
+        int c = new Random().nextInt(97,117);
         return Character.toString(c);
     }
 
     //returns a string of all values in teh array combined
     public String getPhrase() {
-        return String.join("", genes);
+        return String.join(",", genes);
+    }
+
+    //calculates total Distance
+    public void calcTotalDistance() {
+        totalDistance = 0;
+        for (int i = 0; i < genes.length - 1; i++) {
+            totalDistance += graph.getDistance(genes[i],genes[i+1]);
+        }
     }
 
     //fitness function
-    public void calcFitness(String[] target) {
-        int score = 0;
-        for (int i = 0; i < genes.length; i++) {
-            if (genes[i].equals(target[i])) {
-                score++;
-            }
-        }
-        fitness = (double) score / target.length;
+    public void calcFitness() {
+        calcTotalDistance();
+        fitness = (double) totalDistance / 1000;
     }
 
     //crossover function

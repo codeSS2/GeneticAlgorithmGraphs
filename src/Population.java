@@ -37,7 +37,7 @@ public class Population {
     //filling fitness array for all the DNA objects
     public void calcFitness() {
         for (DNA dna : population) {
-            dna.calcFitness(targetArray);
+            dna.calcFitness();
         }
     }
 
