@@ -8,6 +8,7 @@ public class Population {
     DNA[] population;
     ArrayList<DNA> matingPool;
     int generations;
+    String best;
     boolean finished;
     double mutationRate;
 
@@ -78,7 +79,7 @@ public class Population {
                 highestFitness = population[i].fitness;
             }
         }
-        //best = population[index].getPhrase();
+        best = "[" + population[index].getPhrase() + "]";
         if (highestFitness > 0.8) {
             finished = true;
         }

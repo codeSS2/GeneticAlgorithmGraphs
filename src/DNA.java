@@ -31,7 +31,7 @@ public class DNA {
 
     //returns a string of all values in teh array combined
     public String getPhrase() {
-        return String.join(",", genes);
+        return String.join(", ", genes);
     }
 
     //calculates total Distance
