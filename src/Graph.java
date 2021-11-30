@@ -29,7 +29,7 @@ public class Graph {
     }
 
     public int getIndexOfLetter(String str) {
-        return "xabcdefghijklmnopqrs".indexOf(str.toLowerCase());
+        return "xabcdefghijklmnopqrst".indexOf(str.toLowerCase());
     }
 
     public int getDistance(String city1, String city2) {
