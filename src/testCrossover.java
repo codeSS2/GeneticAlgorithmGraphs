@@ -1,7 +1,7 @@
 import java.util.Random;
 
 public class testCrossover {
-    static Graph graph = new Graph();
+    static GraphData graphData = new GraphData();
 
     public static void main(String[] args) {
         long startTime = System.nanoTime();
@@ -66,9 +66,9 @@ public class testCrossover {
                 int indexOfShortest = 0;
                 int shortestDistance = 300;
                 for (int j = 0; j < 4; j++) {
-                    if (availableNodes[j] && graph.getDistance(child[i-1], cities[j]) < shortestDistance) {
+                    if (availableNodes[j] && graphData.getDistance(child[i-1], cities[j]) < shortestDistance) {
                             indexOfShortest = j;
-                            shortestDistance = graph.getDistance(child[i-1], cities[j]);
+                            shortestDistance = graphData.getDistance(child[i-1], cities[j]);
                     }
                 }
                 

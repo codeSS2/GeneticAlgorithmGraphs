@@ -60,8 +60,8 @@ public class Graph {
         return child;
     }*/
 
-    public DNA crossover(DNA partner) {
-        DNA child = new DNA();
+    public Graph crossover(Graph partner) {
+        Graph child = new Graph();
 
         for (int i = 0; i < cities.length; i+=2) {
             int rand = new Random().nextInt(2);
