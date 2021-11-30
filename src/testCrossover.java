@@ -1,7 +1,4 @@
-import java.util.ArrayList;
 import java.util.Random;
-
-import javax.sound.sampled.SourceDataLine;
 
 public class testCrossover {
     static Graph graph = new Graph();
@@ -122,7 +119,7 @@ public class testCrossover {
                 boolean found;
                 do {
                     found = false;
-                    String node = String.valueOf("abcdefgh".charAt(new Random().nextInt(parent1.length)));
+                    String node = String.valueOf("abcdefghijklmnopqrst".charAt(new Random().nextInt(parent1.length)));
                     if(getIndexOf(node,child) == -1) {
                         child[i] = node;
                         found = true;
