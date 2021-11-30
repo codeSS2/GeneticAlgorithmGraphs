@@ -40,6 +40,7 @@ public class DNA {
         for (int i = 0; i < genes.length - 1; i++) {
             totalDistance += graph.getDistance(genes[i],genes[i+1]);
         }
+        totalDistance += graph.getDistance("x", genes[genes.length-1]) + graph.getDistance("x", genes[0]);
     }
 
     //fitness function
