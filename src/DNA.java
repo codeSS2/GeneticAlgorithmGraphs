@@ -25,7 +25,7 @@ public class DNA {
 
     //randomly selects a new char from set given bounds
     public String newChar() {
-        int c = new Random().nextInt(97,117);
+        int c = 0;//new Random().nextInt(97,117);
         return Character.toString(c);
     }
 
