@@ -1,0 +1,30 @@
+Date : 2021-11-30 23:36:51
+Directory : /Users/sebastianserenyi/Library/Mobile Documents/com~apple~CloudDocs/VSCode/GeneticAlgorithmString
+Total : 5 files,  336 codes, 32 comments, 59 blanks, all 427 lines
+
+Languages
++----------+------------+------------+------------+------------+------------+
+| language | files      | code       | comment    | blank      | total      |
++----------+------------+------------+------------+------------+------------+
+| Java     |          5 |        336 |         32 |         59 |        427 |
++----------+------------+------------+------------+------------+------------+
+
+Directories
++---------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                                                      | files      | code       | comment    | blank      | total      |
++---------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                                                         |          5 |        336 |         32 |         59 |        427 |
+| src                                                                                                                       |          5 |        336 |         32 |         59 |        427 |
++---------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++---------------------------------------------------------------------------------------------------------------------------+----------+------------+------------+------------+------------+
+| filename                                                                                                                  | language | code       | comment    | blank      | total      |
++---------------------------------------------------------------------------------------------------------------------------+----------+------------+------------+------------+------------+
+| /Users/sebastianserenyi/Library/Mobile Documents/com~apple~CloudDocs/VSCode/GeneticAlgorithmString/src/Graph.java         | Java     |         77 |         23 |         16 |        116 |
+| /Users/sebastianserenyi/Library/Mobile Documents/com~apple~CloudDocs/VSCode/GeneticAlgorithmString/src/GraphData.java     | Java     |         34 |          0 |          6 |         40 |
+| /Users/sebastianserenyi/Library/Mobile Documents/com~apple~CloudDocs/VSCode/GeneticAlgorithmString/src/Main.java          | Java     |         20 |          0 |          5 |         25 |
+| /Users/sebastianserenyi/Library/Mobile Documents/com~apple~CloudDocs/VSCode/GeneticAlgorithmString/src/Population.java    | Java     |         77 |          8 |         12 |         97 |
+| /Users/sebastianserenyi/Library/Mobile Documents/com~apple~CloudDocs/VSCode/GeneticAlgorithmString/src/testCrossover.java | Java     |        128 |          1 |         20 |        149 |
+| Total                                                                                                                     |          |        336 |         32 |         59 |        427 |
++---------------------------------------------------------------------------------------------------------------------------+----------+------------+------------+------------+------------+
