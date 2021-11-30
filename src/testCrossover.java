@@ -4,22 +4,23 @@ public class testCrossover {
     static GraphData graphData = new GraphData();
 
     public static void main(String[] args) {
-        long startTime = System.nanoTime();
+        /* long startTime = System.nanoTime();
         for (int i = 0; i < 1000000; i++) {
             crossoverWithWeight();
         }
         long endTime = System.nanoTime();
-        System.out.println("Time taken: " + (endTime - startTime) / 1000000 + " mili seconds");
+        System.out.println("Time taken: " + (endTime - startTime) / 1000000 + " mili seconds"); */
+        crossoverWithWeight();
     }
 
     public static void crossoverWithWeight () {
-        String[] parent1 = new String[]{"d", "f", "t", "g", "j", "l", "m", "e", "r", "b", "a", "h", "s", "q", "o", "i", "k", "c", "p", "n"};
-        String[] parent2 = new String[]{"i", "p", "h", "k", "r", "t", "o", "c", "a", "b", "l", "j", "e", "d", "f", "g", "m", "q", "n", "s"};
+        String[] parent1 = new String[]{"x", "d", "f", "t", "g", "j", "l", "m", "e", "r", "b", "a", "h", "s", "q", "o", "i", "k", "c", "p", "n", "x"};
+        String[] parent2 = new String[]{"x", "i", "p", "h", "k", "r", "t", "o", "c", "a", "b", "l", "j", "e", "d", "f", "g", "m", "q", "n", "s", "x"};
         String[] child = new String[parent1.length];
 
         child[0] = parent1[0];
 
-        for (int i = 1; i < parent1.length; i++) {
+        for (int i = 1; i < parent1.length-1; i++) {
             int indexOfLastAddedInParent1 = getIndexOf(child[i-1], parent1);
             int indexOfLastAddedInParent2 = getIndexOf(child[i-1], parent2);
 
@@ -55,7 +56,7 @@ public class testCrossover {
                 boolean found;
                 do {
                     found = false;
-                    String node = String.valueOf("abcdefghijklmnopqrst".charAt(new Random().nextInt(parent1.length)));
+                    String node = String.valueOf("abcdefghijklmnopqrst".charAt(new Random().nextInt(20)));
                     if(getIndexOf(node,child) == -1) {
                         child[i] = node;
                         found = true;
@@ -80,7 +81,8 @@ public class testCrossover {
                 }
             }
         }
-       // System.out.println(String.join(", ", child));
+        child[child.length-1] = "x";
+        System.out.println(String.join(", ", child));
     }
 
     public static int getIndexOf(String s, String[] array) {
@@ -91,13 +93,13 @@ public class testCrossover {
     }
 
     public static void crossover () {
-        String[] parent1 = new String[]{"d", "f", "t", "g", "j", "l", "m", "e", "r", "b", "a", "h", "s", "q", "o", "i", "k", "c", "p", "n"};
-        String[] parent2 = new String[]{"i", "p", "h", "k", "r", "t", "o", "c", "a", "b", "l", "j", "e", "d", "f", "g", "m", "q", "n", "s"};
+        String[] parent1 = new String[]{"x", "d", "f", "t", "g", "j", "l", "m", "e", "r", "b", "a", "h", "s", "q", "o", "i", "k", "c", "p", "n", "x"};
+        String[] parent2 = new String[]{"x", "i", "p", "h", "k", "r", "t", "o", "c", "a", "b", "l", "j", "e", "d", "f", "g", "m", "q", "n", "s", "x"};
         String[] child = new String[parent1.length];
 
         child[0] = parent1[0];
 
-        for (int i = 1; i < parent1.length; i++) {
+        for (int i = 1; i < parent1.length-1; i++) {
             int indexOfLastAddedInParent1 = getIndexOf(child[i-1], parent1);
             int indexOfLastAddedInParent2 = getIndexOf(child[i-1], parent2);
 

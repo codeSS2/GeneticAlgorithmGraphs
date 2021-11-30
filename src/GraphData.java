@@ -29,7 +29,7 @@ public class GraphData {
     }
 
     public int getIndexOfLetter(String str) {
-        return "xabcdefghijklmnopqrst".indexOf(str.toLowerCase());
+        return "xabcdefghijklmnopqrst".indexOf(str);
     }
 
     public int getDistance(String city1, String city2) {
