@@ -21,6 +21,6 @@ public class Main {
         System.out.println("Total Generations: " + population.generations);
         System.out.println("Average Fitness: " + Math.round(population.getAverageFitness() * 100) + "%");
         System.out.println("Time taken: " + (endTime - startTime) / 1000000000 + " seconds");
-
+        
     }
 }
