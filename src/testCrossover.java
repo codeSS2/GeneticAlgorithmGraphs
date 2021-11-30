@@ -53,14 +53,18 @@ public class testCrossover {
                 } while (!found);
 
                 switch(rand) {
-                    case 0 -> child[i] = parent1[indexOfLastAddedInParent1-1];
-                    case 1 -> child[i] = parent1[indexOfLastAddedInParent1+1];
-                    case 2 -> child[i] = parent2[indexOfLastAddedInParent2-1];
-                    case 3 -> child[i] = parent2[indexOfLastAddedInParent2+1];
+                    case 0: child[i] = parent1[indexOfLastAddedInParent1-1]; break;
+                    case 1: child[i] = parent1[indexOfLastAddedInParent1+1]; break;
+                    case 2: child[i] = parent2[indexOfLastAddedInParent2-1]; break;
+                    case 3: child[i] = parent2[indexOfLastAddedInParent2+1]; break;
                 }
             }
         }
         System.out.println(String.join(", ", child));
+    }
+
+    public void crossoverWithWeight () {
+        
     }
 
     public static int getIndexOf(String s, String[] array) {
