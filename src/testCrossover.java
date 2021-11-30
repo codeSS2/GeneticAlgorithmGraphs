@@ -5,9 +5,11 @@ public class testCrossover {
 
     public static void main(String[] args) {
         long startTime = System.nanoTime();
-        crossoverWithWeight();
+        for (int i = 0; i < 1000000; i++) {
+            crossoverWithWeight();
+        }
         long endTime = System.nanoTime();
-        System.out.println("Time taken: " + (endTime - startTime) / 100000000 + "mili seconds");
+        System.out.println("Time taken: " + (endTime - startTime) / 1000000 + " mili seconds");
     }
 
     public static void crossoverWithWeight () {
@@ -78,7 +80,7 @@ public class testCrossover {
                 }
             }
         }
-        System.out.println(String.join(", ", child));
+       // System.out.println(String.join(", ", child));
     }
 
     public static int getIndexOf(String s, String[] array) {

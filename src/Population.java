@@ -1,12 +1,12 @@
 // A class to describe a population of virtual organisms
-// In this case, each organism is just an instance of a DNA object
+// In this case, each organism is just an instance of a Graph object
 
 import java.util.ArrayList;
 import java.util.Random;
 
 public class Population {
-    DNA[] population;
-    ArrayList<DNA> matingPool;
+    Graph[] population;
+    ArrayList<Graph> matingPool;
     int generations;
     String best;
     boolean finished;
@@ -16,16 +16,16 @@ public class Population {
         finished = false;
         mutationRate = m;
 
-        population = new DNA[num];
+        population = new Graph[num];
         for (int i = 0; i < population.length; i++) {
-            population[i] = new DNA(20);
+            population[i] = new Graph();
         }
         //calcFitness();
     }
 
-    //filling fitness array for all the DNA objects
+    //filling fitness array for all the Graph objects
     public void calcFitness() {
-        for (DNA dna : population) {
+        for (Graph dna : population) {
             dna.calcFitness();
         }
     }
@@ -60,9 +60,9 @@ public class Population {
             for (int i = 0; i < population.length; i++) {
                 int a = new Random().nextInt(matingPool.size());
                 int b = new Random().nextInt(matingPool.size());
-                DNA partnerA = matingPool.get(a);
-                DNA partnerB = matingPool.get(b);
-                DNA child = partnerA.crossover(partnerB);
+                Graph partnerA = matingPool.get(a);
+                Graph partnerB = matingPool.get(b);
+                Graph child = partnerA.crossover(partnerB);
                 child.mutate(mutationRate);
                 population[i] = child;
             }
