@@ -48,7 +48,7 @@ public class DNA {
         fitness = (double) totalDistance / 1000;
     }
 
-    //crossover function
+/*    //crossover function
     public DNA crossover(DNA partner) {
         DNA child = new DNA(genes.length);
         int midpoint = new Random().nextInt(genes.length);
@@ -57,6 +57,49 @@ public class DNA {
             else child.genes[i] = partner.genes[i];
         }
         return child;
+    }*/
+
+    public DNA crossover(DNA partner) {
+        DNA child = new DNA(genes.length);
+
+        for (int i = 0; i < genes.length; i+=2) {
+            int rand = new Random().nextInt(2);
+            String node1 = genes[i];
+
+            if (childContains(node1, child.genes)) continue;
+            else if (rand == 0) { //getting edge from this
+                if (i != genes.length && !childContains(genes[i+1],child.genes)){
+                    child.genes[i] = node1;
+                    child.genes[i+1] = genes[i+1];
+                }
+                else if (i != 0 && !childContains(genes[i-1],child.genes)) {
+                    child.genes[i] = node1;
+                    child.genes[i+1] = genes[i-1];
+                } else {
+
+                }
+            }
+            else if (rand == 0) { //getting edge from this
+                if (i != genes.length && !childContains(genes[i+1],child.genes)){
+                    child.genes[i] = node1;
+                    child.genes[i+1] = genes[i+1];
+                }
+                else if (i != 0 && !childContains(genes[i-1],child.genes)) {
+                    child.genes[i] = node1;
+                    child.genes[i+1] = genes[i-1];
+                } else {
+
+                }
+            }
+        }
+        return child;
+    }
+
+    public boolean childContains(String str, String[] child) {
+        for (String s: child) {
+            if (s.equals(str)) return true;
+        }
+        return false;
     }
 
     //mutation

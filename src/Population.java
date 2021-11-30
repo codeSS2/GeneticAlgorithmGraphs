@@ -43,6 +43,7 @@ public class Population {
         for (int i = 0; i < population.length; i++) {
             double n = population[i].fitness/totalFitness;
             int num = (int)Math.round(n * 10000);
+            //System.out.println("[" + population[i].getPhrase() + "] + fitness: " + population[i].fitness + " num " + num);
             for (int j = 0; j < num; j++) {
                 matingPool.add(population[i]);
             }
