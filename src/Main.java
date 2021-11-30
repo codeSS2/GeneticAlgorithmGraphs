@@ -2,7 +2,8 @@ public class Main {
     public static void main(String[] args) {
         int populationMax = 2000;
         double mutationRate = 1; //meaning 1%
-        Population population = new Population(mutationRate, populationMax);
+        double targetFitness = 0.8;
+        Population population = new Population(targetFitness, mutationRate, populationMax);
 
         long startTime = System.nanoTime();
 

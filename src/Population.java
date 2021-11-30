@@ -11,16 +11,16 @@ public class Population {
     String best;
     boolean finished;
     double mutationRate;
+    double targetFitness;
 
-    Population(double m, int num) {
+    Population(double tf, double m, int num) {
         finished = false;
         mutationRate = m;
-
+        targetFitness = tf;
         population = new Graph[num];
         for (int i = 0; i < population.length; i++) {
             population[i] = new Graph();
         }
-        //calcFitness();
     }
 
     //filling fitness array for all the Graph objects
@@ -81,7 +81,7 @@ public class Population {
             }
         }
         best = "[" + population[index].getPhrase() + "]";
-        if (highestFitness > 0.8) {
+        if (highestFitness > targetFitness) {
             finished = true;
         }
     }
