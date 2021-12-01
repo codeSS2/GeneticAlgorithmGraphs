@@ -14,8 +14,8 @@ public class testCrossover {
     }
 
     public static void crossoverWithWeight () {
-        String[] parent1 = new String[]{"x", "d", "f", "t", "g", "j", "l", "m", "e", "r", "b", "a", "h", "s", "q", "o", "i", "k", "c", "p", "n", "x"};
-        String[] parent2 = new String[]{"x", "i", "p", "h", "k", "r", "t", "o", "c", "a", "b", "l", "j", "e", "d", "f", "g", "m", "q", "n", "s", "x"};
+        String[] parent1 = new String[]{"x", "k", "p", "c", "n", "h", "i", "a", "r", "m", "s", "l", "f", "e", "d", "q", "j", "b", "t", "o", "g", "x"};
+        String[] parent2 = new String[]{"x", "c", "a", "o", "j", "e", "q", "r", "b", "s", "h", "k", "d", "i", "p", "t", "n", "f", "l", "m", "g", "x"};
         String[] child = new String[parent1.length];
 
         child[0] = parent1[0];
@@ -51,7 +51,6 @@ public class testCrossover {
                     break;
                 }
             }
-
             if (allFalse) {
                 boolean found;
                 do {
