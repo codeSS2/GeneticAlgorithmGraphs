@@ -72,7 +72,6 @@ public class Graph {
             if (indexOfShortest == -1) {
                 child.cities[i] = newChar(child.cities);
             } else {
-                
                 switch(indexOfShortest) {
                     case 0 -> child.cities[i] = parent1[indexOfLastAddedInParent1-1];
                     case 1 -> child.cities[i] = parent1[indexOfLastAddedInParent1+1];

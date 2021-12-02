@@ -82,6 +82,7 @@ public class Population {
         best = "[" + population[index].getPhrase() + "]";
         if (highestFitness > targetFitness) {
             System.out.println("Total distance: " + population[index].totalDistance);
+            System.out.println("Fitness of best: " + population[index].fitness * 100 + "%");
             finished = true;
         }
     }
