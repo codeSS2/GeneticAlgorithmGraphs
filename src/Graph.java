@@ -46,7 +46,7 @@ public class Graph {
     //fitness function
     public void calcFitness() {
         calcTotalDistance();
-        fitness = (double)1300/totalDistance;
+        fitness = (double)1000/totalDistance;
     }
 
     public Graph crossover(Graph partner) {
@@ -99,9 +99,13 @@ public class Graph {
 
     //mutation
     public void mutate(double mutationRate) {
-        for (int i = 0; i < cities.length; i++) {
-            if (new Random().nextInt(100) < mutationRate) {
-                cities[i] = newChar(cities);
+        for (int i = 1; i < cities.length-1; i++) {
+            if (new Random().nextDouble(1) < mutationRate) {
+                int randomIndex = new Random().nextInt(1,cities.length-1);
+                String city1 = cities[randomIndex];
+                String city2 = cities[i];
+                cities[i] = city1;
+                cities[randomIndex] = city2;
             }
         }
     }

@@ -1,22 +1,17 @@
 public class Main {
     public static void main(String[] args) {
-        int populationMax = 4;
-        double mutationRate = 1; //meaning 1%
-        double targetFitness = 0.60;
+        int populationMax = 1000;
+        double mutationRate = 0.01; //meaning 1%
+        double targetFitness = 0.91;
         Population population = new Population(targetFitness, mutationRate, populationMax);
 
         long startTime = System.nanoTime();
  
-        do {
-            System.out.println("done0");
+        do { 
             population.naturalSelection();
-            System.out.println("done1");
             population.generate();
-            System.out.println("done2");
             population.calcFitness();
-            System.out.println("done3");
             population.evaluate();
-            System.out.println("done4");
         } while(!population.finished); 
         System.out.println(population.best);
         long endTime = System.nanoTime();
