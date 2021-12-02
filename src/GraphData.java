@@ -25,32 +25,6 @@ public class GraphData {
                 {111 ,57 ,185, 251, 26, 75, 163, 39, 93, 140, 101, 101, 226, 81, 69, 159, 86, 211, 161, 0, 115},
                 {24 ,109, 84, 137, 92 ,49 ,144, 152, 112, 50, 71, 78, 125, 127, 49, 50, 52, 128, 90, 115, 0},
         };
-        /* int[] arrayDistances = new int[210];
-        int counter = 0;
-        for(int i = 0; i < 21; i++) {
-            for (int j = 0; j < i;j++) {
-                arrayDistances[counter] = matrix[i][j];
-                counter++;
-            }
-        }
-        boolean swapped;
-        do {
-            swapped = false;
-            for (int i = 0; i < arrayDistances.length - 1; i++) {
-                if (arrayDistances[i] > arrayDistances[i+1]) {
-                    swapped = true;
-                    int placeHolder = arrayDistances[i];
-                    arrayDistances[i] = arrayDistances[i+1];
-                    arrayDistances[i+1] = placeHolder;
-                }
-            }
-        } while (swapped);
-
-        int totalDistance = 0;
-        for(int i = 0; i < 20; i++) {
-            totalDistance += arrayDistances[i];
-        }
-        System.out.println(totalDistance); */
     }
 
     public int getIndexOfLetter(String str) {
