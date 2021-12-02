@@ -1,8 +1,8 @@
 public class Main {
     public static void main(String[] args) {
-        int populationMax = 100;
+        int populationMax = 4;
         double mutationRate = 1; //meaning 1%
-        double targetFitness = 0.1;
+        double targetFitness = 0.60;
         Population population = new Population(targetFitness, mutationRate, populationMax);
 
         long startTime = System.nanoTime();
@@ -17,9 +17,8 @@ public class Main {
             System.out.println("done3");
             population.evaluate();
             System.out.println("done4");
-            
         } while(!population.finished); 
-
+        System.out.println(population.best);
         long endTime = System.nanoTime();
         System.out.println("" + "Population: " + populationMax);
         System.out.println("Mutation Rate: " + mutationRate);

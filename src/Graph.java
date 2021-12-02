@@ -5,6 +5,7 @@ public class Graph {
     double fitness;
     int totalDistance;
     GraphData graphData = new GraphData();
+    int shortestDistance;
 
     //constructor
     Graph(boolean child) {
@@ -45,55 +46,27 @@ public class Graph {
     //fitness function
     public void calcFitness() {
         calcTotalDistance();
-        fitness = (double) totalDistance / 5000;
-        System.out.println(totalDistance);
+        fitness = (double)1300/totalDistance;
     }
 
     public Graph crossover(Graph partner) {
-        System.out.println("enter");
         String[] parent1 = cities;
         String[] parent2 = partner.cities;
         Graph child = new Graph(true);
 
-        child.cities[0] = parent1[0];
-
-        for (int i = 1; i < parent1.length-1; i++) {
+        child.cities[1] = parent1[1];
+        for (int i = 2; i < parent1.length-1; i++) {
             int indexOfLastAddedInParent1 = getIndexOf(child.cities[i-1], parent1);
             int indexOfLastAddedInParent2 = getIndexOf(child.cities[i-1], parent2);
-            boolean allFalse = true;
-            int indexOfShortest = 0;
-            int shortestDistance = 300;
+            int indexOfShortest = -1;
+            shortestDistance = 300;
+            
+            indexOfShortest = getIndexOfShortestDistance(indexOfLastAddedInParent1-1, parent1, child.cities, indexOfShortest, child.cities[i-1], 0);
+            indexOfShortest = getIndexOfShortestDistance(indexOfLastAddedInParent1+1, parent1, child.cities, indexOfShortest, child.cities[i-1], 1);
+            indexOfShortest = getIndexOfShortestDistance(indexOfLastAddedInParent2-1, parent2, child.cities, indexOfShortest, child.cities[i-1], 2);
+            indexOfShortest = getIndexOfShortestDistance(indexOfLastAddedInParent2+1, parent2, child.cities, indexOfShortest, child.cities[i-1], 3);
 
-            if (indexOfLastAddedInParent1 != 0) {
-                allFalse = false;
-                if (graphData.getDistance(child.cities[i-1], parent1[indexOfLastAddedInParent1-1]) < shortestDistance) {
-                    indexOfShortest = 0;
-                    shortestDistance = graphData.getDistance(child.cities[i-1], parent1[indexOfLastAddedInParent1-1]);
-                }   
-            }
-            if (indexOfLastAddedInParent1 < parent1.length-1) {
-                allFalse = false;
-                if (graphData.getDistance(child.cities[i-1], parent1[indexOfLastAddedInParent1+1]) < shortestDistance) {
-                    indexOfShortest = 1;
-                    shortestDistance = graphData.getDistance(child.cities[i-1], parent1[indexOfLastAddedInParent1+1]);
-                }   
-            }
-            if (indexOfLastAddedInParent2 != 0) {
-                allFalse = false;
-                if (graphData.getDistance(child.cities[i-1], parent2[indexOfLastAddedInParent2-1]) < shortestDistance) {
-                    indexOfShortest = 2;
-                    shortestDistance = graphData.getDistance(child.cities[i-1], parent2[indexOfLastAddedInParent2-1]);
-                }   
-            }
-            if (indexOfLastAddedInParent2 < parent2.length-1) {
-                allFalse = false;
-                if (graphData.getDistance(child.cities[i-1], parent2[indexOfLastAddedInParent2+1]) < shortestDistance) {
-                    indexOfShortest = 3;
-                    shortestDistance = graphData.getDistance(child.cities[i-1], parent2[indexOfLastAddedInParent2+1]);
-                }   
-            }
-
-            if (allFalse) {
+            if (indexOfShortest == -1) {
                 child.cities[i] = newChar(child.cities);
             } else {
                 switch(indexOfShortest) {
@@ -104,8 +77,17 @@ public class Graph {
                 }
             }
         }
+        child.cities[0] = "x";
         child.cities[child.cities.length-1] = "x";
         return child;
+    }
+    
+    public int getIndexOfShortestDistance(int indexInParent, String[] parent, String[] child, int indexOfShortest, String lastAddedInChild, int index) {
+        if (indexInParent != 0 && indexInParent != parent.length-1 && getIndexOf(parent[indexInParent], child) == -1 && graphData.getDistance(lastAddedInChild, parent[indexInParent]) < shortestDistance) {
+            indexOfShortest = index;
+            shortestDistance = graphData.getDistance(lastAddedInChild, parent[indexInParent]);
+        }
+        return indexOfShortest;
     }
 
     public int getIndexOf(String s, String[] array) {
@@ -113,13 +95,6 @@ public class Graph {
             if (array[i] != null && array[i].equals(s)) return i;
         }
         return -1;
-    }
-
-    public boolean childCitiesCitiesContains(String str, String[] childCitiesCities) {
-        for (String s: childCitiesCities) {
-            if (s.equals(str)) return true;
-        }
-        return false;
     }
 
     //mutation
