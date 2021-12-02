@@ -8,12 +8,6 @@ public class testCrossover {
         System.out.println(crossoverWithWeight(
             new String[]{"x", "h", "l", "i", "m", "g", "q", "j", "r", "o", "c", "k", "t", "f", "a", "e", "d", "s", "b", "p", "n", "x"}, 
             new String[]{"x", "d", "q", "i", "m", "f", "c", "o", "j", "n", "k", "g", "l", "t", "s", "b", "a", "e", "r", "h", "p", "x"}));
-        System.out.println(crossoverWithWeight(
-            new String[]{"x", "d", "q", "i", "m", "f", "c", "o", "j", "n", "k", "g", "l", "t", "s", "b", "a", "e", "r", "h", "p", "x"}, 
-            new String[]{"x", "a", "g", "b", "h", "n", "d", "o", "l", "r", "c", "k", "i", "p", "t", "m", "s", "j", "e", "f", "q", "x"}));
-        System.out.println(crossoverWithWeight(
-            new String[]{"x", "a", "g", "b", "h", "n", "d", "o", "l", "r", "c", "k", "i", "p", "t", "m", "s", "j", "e", "f", "q", "x"}, 
-            new String[]{"x", "s", "k", "q", "i", "m", "j", "l", "d", "g", "b", "e", "f", "c", "p", "o", "a", "r", "n", "h", "t", "x"}));
                     
     }
 

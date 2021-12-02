@@ -56,19 +56,23 @@ public class Graph {
 
         child.cities[1] = parent1[1];
         for (int i = 2; i < parent1.length-1; i++) {
+            // getting index of last added city in to child in both parents
             int indexOfLastAddedInParent1 = getIndexOf(child.cities[i-1], parent1);
             int indexOfLastAddedInParent2 = getIndexOf(child.cities[i-1], parent2);
             int indexOfShortest = -1;
             shortestDistance = 300;
             
+            //finds which out of the 4 nodes connected to the last added to the city has the shortest distance
             indexOfShortest = getIndexOfShortestDistance(indexOfLastAddedInParent1-1, parent1, child.cities, indexOfShortest, child.cities[i-1], 0);
             indexOfShortest = getIndexOfShortestDistance(indexOfLastAddedInParent1+1, parent1, child.cities, indexOfShortest, child.cities[i-1], 1);
             indexOfShortest = getIndexOfShortestDistance(indexOfLastAddedInParent2-1, parent2, child.cities, indexOfShortest, child.cities[i-1], 2);
             indexOfShortest = getIndexOfShortestDistance(indexOfLastAddedInParent2+1, parent2, child.cities, indexOfShortest, child.cities[i-1], 3);
 
+            // if there is no available adjacent nodes, a new node is randomly generated, otherwise the adjacvent  
             if (indexOfShortest == -1) {
                 child.cities[i] = newChar(child.cities);
             } else {
+                
                 switch(indexOfShortest) {
                     case 0 -> child.cities[i] = parent1[indexOfLastAddedInParent1-1];
                     case 1 -> child.cities[i] = parent1[indexOfLastAddedInParent1+1];
