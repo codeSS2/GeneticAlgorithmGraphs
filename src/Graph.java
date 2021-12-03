@@ -1,5 +1,7 @@
 import java.util.Random;
 
+import javax.management.monitor.GaugeMonitor;
+
 public class Graph {
     String[] cities;
     double fitness;
@@ -111,6 +113,36 @@ public class Graph {
                 cities[randomIndex] = city2;
             }
         }
+    }
+
+    //order  crossover (OX)
+    public Graph orderCrossover(Graph partner) {
+        String[] parent1 = cities;
+        String[] parent2 = partner.cities;
+        Graph child = new Graph(true);
+        
+        int bound1 = new Random().nextInt(cities.length/2);
+        int bound2 = new Random().nextInt(cities.length/2, cities.length);
+
+        //putting random subsequence from parent 1 into child
+        for (int i = bound1; i < bound2; i++) {
+            child.cities[i] = parent1[i];
+        }         
+        //filling in missing indexes from parent2 with cities that are not laready in  child
+        for (int i = 0; i < parent2.length; i++) {
+            if(child.cities[i] == null) {
+                child.cities[i] = parent2[getNextAvailable(child.cities, parent2)];
+            }
+        }
+
+        return child;
+    }
+
+    public int getNextAvailable(String[] child, String[] parent) {
+        for (int i = 0; i < parent.length; i++) {
+            if(getIndexOf(parent[i], child) == -1) return i;
+        }
+        return 0;
     }
 
 }
