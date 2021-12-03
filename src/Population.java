@@ -61,8 +61,8 @@ public class Population {
                 int b = new Random().nextInt(matingPool.size());
                 Graph partnerA = matingPool.get(a);
                 Graph partnerB = matingPool.get(b);
-                // Graph child = partnerA.crossover(partnerB);
-                Graph child = partnerA.orderCrossover(partnerB);
+                Graph child = partnerA.crossover(partnerB);
+                // Graph child = partnerA.orderCrossover(partnerB);
                 child.mutate(mutationRate);
                 population[i] = child;
             }
