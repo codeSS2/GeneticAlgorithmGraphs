@@ -1,7 +1,5 @@
 import java.util.Random;
 
-import javax.management.monitor.GaugeMonitor;
-
 public class Graph {
     String[] cities;
     double fitness;
