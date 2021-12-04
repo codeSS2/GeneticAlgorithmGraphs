@@ -24,15 +24,10 @@ public class Graph {
     public String newChar(String[] cities) {
         do {
             String cityTrial = Character.toString(new Random().nextInt(97,117));
-            if(getIndexOf(cityTrial,cities) == -1) {
+            if(!contains(cityTrial,cities)) {
                 return cityTrial;
             }
         } while (true);
-    }
-
-    //returns a string of all values in teh array combined
-    public String getPhrase() {
-        return String.join(", ", cities);
     }
 
     //calculates total Distance
@@ -84,20 +79,35 @@ public class Graph {
         child.cities[child.cities.length-1] = "x";
         return child;
     }
-    
+
     public int getIndexOfShortestDistance(int indexInParent, String[] parent, String[] child, int indexOfShortest, String lastAddedInChild, int index) {
-        if (indexInParent != 0 && indexInParent != parent.length-1 && getIndexOf(parent[indexInParent], child) == -1 && graphData.getDistance(lastAddedInChild, parent[indexInParent]) < shortestDistance) {
+        if (indexInParent != 0 && indexInParent != parent.length-1 &&  !contains(parent[indexInParent], child) && graphData.getDistance(lastAddedInChild, parent[indexInParent]) < shortestDistance) {
             indexOfShortest = index;
             shortestDistance = graphData.getDistance(lastAddedInChild, parent[indexInParent]);
         }
         return indexOfShortest;
     }
 
-    public int getIndexOf(String s, String[] array) {
-        for (int i = 0; i < array.length; i++) {
-            if (array[i] != null && array[i].equals(s)) return i;
+    //order  crossover (OX)
+    public Graph orderCrossover(Graph partner) {
+        String[] parent1 = cities;
+        String[] parent2 = partner.cities;
+        Graph child = new Graph(true);
+        
+        int bound1 = new Random().nextInt(1, cities.length/2);
+        int bound2 = new Random().nextInt(cities.length/2, cities.length-1);
+
+        //putting random subsequence from parent 1 into child
+        for (int i = bound1; i < bound2; i++) {
+            child.cities[i] = parent1[i];
+        }         
+        //filling in missing indexes from parent2 with cities that are not laready in  child
+        for (int i = 0; i < parent2.length; i++) {
+            if(child.cities[i] == null) {
+                child.cities[i] = parent2[getNextAvailable(child.cities, parent2)];
+            }
         }
-        return -1;
+        return child;
     }
 
     //mutation
@@ -113,33 +123,27 @@ public class Graph {
         }
     }
 
-    //order  crossover (OX)
-    public Graph orderCrossover(Graph partner) {
-        String[] parent1 = cities;
-        String[] parent2 = partner.cities;
-        Graph child = new Graph(true);
-        
-        int bound1 = new Random().nextInt(cities.length/2);
-        int bound2 = new Random().nextInt(cities.length/2, cities.length);
+    //returns a string of all values in teh array combined
+    public String getPhrase() {
+        return String.join(", ", cities);
+    }
 
-        //putting random subsequence from parent 1 into child
-        for (int i = bound1; i < bound2; i++) {
-            child.cities[i] = parent1[i];
-        }         
-        //filling in missing indexes from parent2 with cities that are not laready in  child
-        for (int i = 0; i < parent2.length; i++) {
-            if(child.cities[i] == null) {
-                child.cities[i] = parent2[getNextAvailable(child.cities, parent2)];
-            }
+    public int getIndexOf(String s, String[] array) {
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] != null && array[i].equals(s)) return i;
         }
+        return -1;
+    }
 
-        return child;
+    public boolean contains(String s, String[] array) {
+        return getIndexOf(s, array) != -1;
     }
 
     public int getNextAvailable(String[] child, String[] parent) {
         for (int i = 0; i < parent.length; i++) {
-            if(getIndexOf(parent[i], child) == -1) return i;
+            if(!contains(parent[i], child)) return i;
         }
         return 0;
     }
+
 }

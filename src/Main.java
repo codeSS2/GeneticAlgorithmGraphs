@@ -1,8 +1,14 @@
 public class Main {
     public static void main(String[] args) {
+
+        createGraph();
+
+    }
+     
+    public static void createGraph() {
         int populationMax = 1000;
         double mutationRate = 0.01; //meaning 1%
-        double targetFitness = 0.95;
+        double targetFitness = 0.93;
         Population population = new Population(targetFitness, mutationRate, populationMax);
 
         long startTime = System.nanoTime();
