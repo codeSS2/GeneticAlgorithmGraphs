@@ -1,11 +1,6 @@
 public class Main {
     public static void main(String[] args) {
 
-        createGraph();
-
-    }
-     
-    public static void createGraph() {
         int populationMax = 1000;
         double mutationRate = 0.01; //meaning 1%
         double targetFitness = 0.93;
@@ -25,5 +20,7 @@ public class Main {
         System.out.println("Mutation Rate: " + mutationRate * 100 + "%");
         System.out.println("Average Fitness: " + Math.round(population.getAverageFitness() * 100) + "%");
         System.out.println("Time taken: " + (endTime - startTime) / 1000000000 + " seconds");  
+
     }
+     
 }
