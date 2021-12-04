@@ -57,7 +57,7 @@ public class Graph {
             int indexOfShortest = -1;
             shortestDistance = 300;
             
-            //finds which out of the 4 nodes connected to the last added to the city has the shortest distance
+            //nfinds which out of the 4 nodes adhacent nodes to the last added node to the child has shortest distance
             indexOfShortest = getIndexOfShortestDistance(indexOfLastAddedInParent1-1, parent1, child.cities, indexOfShortest, child.cities[i-1], 0);
             indexOfShortest = getIndexOfShortestDistance(indexOfLastAddedInParent1+1, parent1, child.cities, indexOfShortest, child.cities[i-1], 1);
             indexOfShortest = getIndexOfShortestDistance(indexOfLastAddedInParent2-1, parent2, child.cities, indexOfShortest, child.cities[i-1], 2);
